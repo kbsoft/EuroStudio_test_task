@@ -14,7 +14,7 @@ flask run --host=0.0.0.0 --port=5000
 
 ### Docker
 
-Для сборки образа перейти в директорию `webapi` и выполнить команду:
+Для сборки образа перейти в директорию `inference` и выполнить команду:
 
 ```
 DOCKER_BUILDKIT=1 docker build -t api -f webapi/Dockerfile .
