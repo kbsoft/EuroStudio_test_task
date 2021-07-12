@@ -8,13 +8,13 @@
 Загрузка через Телеграм бота
 
 ```
-docker-compose --profile bot up -d
+docker-compose -p bot --profile bot up -d
 ```
 
 Загрузка через web-страницу
 
 ```
-docker-compose --profile web up -d
+docker-compose -p web --profile web up -d
 ```
 
 Просмотр логов
