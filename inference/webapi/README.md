@@ -17,7 +17,7 @@ flask run --host=0.0.0.0 --port=5000
 Для сборки образа перейти в директорию `webapi` и выполнить команду:
 
 ```
-DOCKER_BUILDKIT=1 docker build -t api .
+DOCKER_BUILDKIT=1 docker build -t api -f webapi/Dockerfile .
 ```
 
 Пример запуска образа:

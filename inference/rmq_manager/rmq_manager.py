@@ -28,8 +28,12 @@ class AbstractRMQManager(metaclass=ABCMeta):
         :param delay: время задержки между попытками соединения с сервером; default - 5
         :param tries: количество попыток соединения с сервером; default - 5
         """
-        # TODO: initalize parameters in abstract class
-        pass
+        self.user = user
+        self.password = password
+        self.host = host
+        self.port = port
+        self.delay = delay
+        self.tries = tries
 
     @abstractmethod
     def queue_declare(self, queue_name):
@@ -94,13 +98,14 @@ class RMQManager(AbstractRMQManager):
         delay=5,
         tries=5,
     ):
-        self.__delay = delay
-        self.__tries = tries
-
-        self.__user = user
-        self.__pwd = password
-        self.__host = host
-        self.__port = port
+        super().__init__(
+            user,
+            password,
+            host,
+            port=port,
+            delay=delay,
+            tries=tries,
+        )
 
         self.__conn_type = None
         self.__queue_name = None
@@ -110,16 +115,16 @@ class RMQManager(AbstractRMQManager):
         self.__start()
 
     def __start(self):
-        retry_call(self.__create_connection, tries=self.__tries, delay=self.__delay)
+        retry_call(self.__create_connection, tries=self.tries, delay=self.delay)
 
     def __create_connection(self):
-        logging.info(f"Connecting to {self.__host}:{self.__port} as {self.__user}...")
+        logging.info(f"Connecting to {self.host}:{self.port} as {self.user}...")
         self.__connection = pika.BlockingConnection(
             pika.ConnectionParameters(
-                host=self.__host,
-                port=self.__port,
+                host=self.host,
+                port=self.port,
                 heartbeat=10,
-                credentials=pika.PlainCredentials(self.__user, self.__pwd),
+                credentials=pika.PlainCredentials(self.user, self.password),
             )
         )
         self.__channel = self.__connection.channel()
@@ -218,9 +223,9 @@ class DummyRMQManager(AbstractRMQManager):
             user,
             password,
             host,
-            port=5672,
-            delay=5,
-            tries=5,
+            port=port,
+            delay=delay,
+            tries=tries,
         )
 
     def queue_declare(self, queue_name):

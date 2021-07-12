@@ -14,14 +14,14 @@ python image_sender.py
 
 ### Docker
 
-Для сборки образа перейти в директорию `telegram_bot` и выполнить команду:
+Для сборки образа из директории `inference` выполнить команду:
 
 ```
-DOCKER_BUILDKIT=1 docker build -t tgbot_api .
+DOCKER_BUILDKIT=1 docker build -t tgbot -f telegram_bot/Dockerfile .
 ```
 
 Пример запуска образа:
 
 ```
-docker run -d --rm --net host -v <host_shared_dir_for_photos>:/workspace/photos tgbot_api python image_sender.py
+docker run -d --rm --net host -v <host_shared_dir_for_photos>:/workspace/photos tgbot python image_sender.py
 ```

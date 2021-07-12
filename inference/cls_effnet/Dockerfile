@@ -116,7 +116,7 @@ RUN export CMAKE_PREFIX_PATH="/opt/conda/bin" \
 	hydra_colorlog==1.1.0
 
 
-COPY classifier /workspace/classifier
+COPY cls_effnet/classifier /workspace/classifier
 COPY rmq_manager /workspace/rmq_manager
 
 RUN pip install -e rmq_manager
