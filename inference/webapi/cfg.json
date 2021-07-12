@@ -1,0 +1,6 @@
+{
+    "user": "guest",
+    "password": "guest",
+    "host": "rmq",
+    "port": 5672
+}
