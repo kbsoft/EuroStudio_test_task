@@ -7,4 +7,4 @@ WORKDIR /workspace/telegram_bot
 COPY telegram_bot .
 COPY rmq_manager /workspace/telegram_bot/rmq_manager
 
-RUN ls && pip install -e rmq_manager
+RUN pip install -e rmq_manager
