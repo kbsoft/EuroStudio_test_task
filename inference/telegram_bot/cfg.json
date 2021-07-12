@@ -3,6 +3,6 @@
     "password": "guest",
     "host": "rmq",
     "port": 5672,
-    "token": "1776899061:AAGW0eA91OaZOvS7yO1fh16f7kI7AEaeugY",
+    "token": "<telegram_bot_token>",
     "root_dir": "/workspace/photos"
 }
