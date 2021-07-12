@@ -1,0 +1,6 @@
+HOST: rmq
+USER: guest
+PASSWORD: guest
+QUEUE:
+  ML: ml_result
+  PHOTO: photo
